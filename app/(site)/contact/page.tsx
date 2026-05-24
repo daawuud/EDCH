@@ -2,7 +2,14 @@ import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
 import { siteContent } from "@/data/site-content";
 
-export default function ContactPage() {
+export default function ContactPage({
+  searchParams
+}: {
+  searchParams?: { sent?: string; error?: string };
+}) {
+  const sent = Boolean(searchParams?.sent);
+  const error = Boolean(searchParams?.error);
+
   return (
     <main>
       <PageHero
@@ -21,10 +28,11 @@ export default function ContactPage() {
             </p>
             <p className="mt-6 font-bold text-emerald-300">{siteContent.location}</p>
             <p className="mt-8 rounded-2xl bg-white/10 p-4 text-sm font-bold text-slate-200">
-              Demo form only. No backend, database, or email delivery is connected yet.
+              The form saves to Supabase when configured. Email delivery can be
+              connected later.
             </p>
           </div>
-          <ContactForm />
+          <ContactForm sent={sent} error={error} />
         </div>
       </section>
     </main>

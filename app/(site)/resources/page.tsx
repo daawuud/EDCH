@@ -1,8 +1,10 @@
 import { PageHero } from "@/components/page-hero";
 import { SectionCard } from "@/components/section-card";
-import { siteContent } from "@/data/site-content";
+import { getPublicResources } from "@/lib/public-data";
 
-export default function ResourcesPage() {
+export default async function ResourcesPage() {
+  const resources = await getPublicResources();
+
   return (
     <main>
       <PageHero
@@ -12,11 +14,13 @@ export default function ResourcesPage() {
       />
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-950">
         <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {siteContent.resources.map((resource) => (
+          {resources.map((resource) => (
             <SectionCard
               key={resource.title}
               title={resource.title}
               description={resource.description}
+              href={resource.href}
+              cta={resource.href ? "Open Resource" : undefined}
             />
           ))}
         </div>

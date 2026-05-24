@@ -1,8 +1,10 @@
 import { PageHero } from "@/components/page-hero";
 import { SectionCard } from "@/components/section-card";
-import { siteContent } from "@/data/site-content";
+import { getPublicEvents } from "@/lib/public-data";
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const events = await getPublicEvents();
+
   return (
     <main>
       <PageHero
@@ -12,8 +14,12 @@ export default function EventsPage() {
       />
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-950">
         <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
-          {siteContent.events.map((event) => (
-            <SectionCard key={event.title} title={event.title} description={event.description} />
+          {events.map((event) => (
+            <SectionCard
+              key={event.title}
+              title={event.title}
+              description={`${event.meta ? `${event.meta}. ` : ""}${event.description}`}
+            />
           ))}
         </div>
       </section>

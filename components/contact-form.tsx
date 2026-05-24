@@ -1,24 +1,20 @@
-"use client";
-
-import { FormEvent, useState } from "react";
 import { siteContent } from "@/data/site-content";
+import { submitContactMessage } from "@/lib/contact-actions";
 
-export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitted(true);
-    event.currentTarget.reset();
-  }
-
+export function ContactForm({
+  sent = false,
+  error = false
+}: {
+  sent?: boolean;
+  error?: boolean;
+}) {
   return (
     <form
-      onSubmit={handleSubmit}
+      action={submitContactMessage}
       className="rounded-[2rem] bg-white p-6 text-edch-ink shadow-soft ring-1 ring-blue-100 sm:p-8 dark:bg-white/10 dark:text-white dark:ring-white/10"
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Full name" name="name" type="text" required />
+        <Field label="Full name" name="fullName" type="text" required />
         <Field label="Email" name="email" type="email" required />
         <Field label="Phone number" name="phone" type="tel" />
         <label className="grid gap-2 text-sm font-bold text-slate-700 dark:text-slate-200">
@@ -49,12 +45,21 @@ export function ContactForm() {
         />
       </label>
 
-      {submitted ? (
+      {sent ? (
         <p
           role="status"
           className="mt-5 rounded-2xl bg-edch-mint p-4 font-bold text-edch-green"
         >
-          Thank you for contacting EDCH. This form is ready for backend connection.
+          Thank you for contacting EDCH. Your message has been received.
+        </p>
+      ) : null}
+
+      {error ? (
+        <p
+          role="alert"
+          className="mt-5 rounded-2xl bg-red-50 p-4 font-bold text-red-700"
+        >
+          Sorry, your message could not be sent. Please try again later.
         </p>
       ) : null}
 
