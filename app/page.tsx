@@ -95,10 +95,3 @@ export default function Home() {
       </main>
   );
 }
-node_modules/
-.next/
-out/
-.vercel/
-.env
-.env.local
-.DS_Store
