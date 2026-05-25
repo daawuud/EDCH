@@ -47,6 +47,45 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <section className="bg-edch-sky px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-900">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="What EDCH is building"
+            title="Practical community infrastructure for Edmonton"
+            description="EDCH is being shaped step by step with people, families, volunteers, and partners who understand local needs."
+          />
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <SectionCard
+              title="A trusted local support network"
+              description="A warm place for people to connect, ask questions, and find reliable next steps."
+              icon="CS"
+              meta="Community support"
+              tone="white"
+            />
+            <SectionCard
+              title="Accessible community meetings"
+              description="Inclusive gatherings where members can share needs, learn together, and reduce isolation."
+              icon="AC"
+              meta="Accessibility"
+              tone="green"
+            />
+            <SectionCard
+              title="Training and information sessions"
+              description="Plain-language sessions for digital skills, rights awareness, services, and family support."
+              icon="TR"
+              meta="Training"
+              tone="white"
+            />
+            <SectionCard
+              title="Help navigating disability services"
+              description="Clear guidance for understanding service pathways, referrals, forms, and support options."
+              icon="RN"
+              meta="Resources"
+              tone="blue"
+            />
+          </div>
+        </div>
+      </section>
       <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-900">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
@@ -75,7 +114,7 @@ export default function AboutPage() {
       </section>
       <CallToAction
         title="Help shape EDCH with the community"
-        description="Connect with EDCH to share ideas, volunteer, or learn how this hub can support Edmonton families and partners."
+        description="Share ideas, volunteer, or learn how this hub can support Edmonton families, caregivers, newcomers, and partners."
         primaryLabel="Contact EDCH"
         primaryHref="/contact"
         secondaryLabel="Become a Member"

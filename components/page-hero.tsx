@@ -45,7 +45,7 @@ export function PageHero({
       className={cn(
         "relative overflow-hidden border-b border-blue-100/80 px-4 py-12 sm:px-6 lg:px-8 dark:border-white/10",
         isImpact
-          ? "bg-edch-ink text-white"
+          ? "bg-[#123a66] text-white"
           : "bg-[linear-gradient(135deg,#f8fbff_0%,#ffffff_48%,#eefaf4_100%)] dark:bg-[linear-gradient(135deg,#071525_0%,#0b233a_52%,#082417_100%)]"
       )}
     >
@@ -69,7 +69,7 @@ export function PageHero({
           </p>
           <h1
             className={cn(
-              "mt-5 max-w-4xl text-4xl font-black leading-tight tracking-tight sm:text-5xl",
+              "mt-5 max-w-4xl text-3xl font-black leading-tight tracking-tight sm:text-4xl lg:text-5xl",
               isCentered && "mx-auto",
               isImpact ? "text-white" : "text-edch-ink dark:text-white"
             )}
@@ -78,7 +78,7 @@ export function PageHero({
           </h1>
           <p
             className={cn(
-              "mt-5 max-w-3xl text-lg leading-8",
+              "mt-5 max-w-3xl text-base leading-8 sm:text-lg",
               isCentered && "mx-auto",
               isImpact ? "text-slate-200" : "text-slate-600 dark:text-slate-200"
             )}

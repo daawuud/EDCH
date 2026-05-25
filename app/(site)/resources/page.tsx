@@ -37,7 +37,7 @@ export default async function ResourcesPage() {
                 description={resource.description}
                 href={resource.href}
                 cta={resource.href ? "Open Resource" : undefined}
-                icon={`${index + 1}`}
+                icon={getResourceIcon(resource.title)}
                 meta="Resource"
                 tone={index % 2 === 0 ? "blue" : "white"}
               />
@@ -47,4 +47,16 @@ export default async function ResourcesPage() {
       </section>
     </main>
   );
+}
+
+function getResourceIcon(title: string) {
+  const lowerTitle = title.toLowerCase();
+
+  if (lowerTitle.includes("disability") || lowerTitle.includes("adap")) return "DS";
+  if (lowerTitle.includes("aish")) return "AI";
+  if (lowerTitle.includes("transport")) return "AT";
+  if (lowerTitle.includes("legal") || lowerTitle.includes("rights")) return "LR";
+  if (lowerTitle.includes("settlement")) return "NS";
+
+  return "RS";
 }

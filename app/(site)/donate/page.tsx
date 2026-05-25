@@ -33,7 +33,7 @@ export default function DonatePage() {
                 key={item.title}
                 title={item.title}
                 description={item.description}
-                icon={`${index + 1}`}
+                icon={getSupportIcon(item.title)}
                 meta="Support pathway"
                 tone={index % 2 === 0 ? "white" : "green"}
               />
@@ -47,11 +47,22 @@ export default function DonatePage() {
         </div>
       </section>
       <CallToAction
-        title="Talk with EDCH about support"
+        title="Help shape EDCH with practical support"
         description="Use the contact page to discuss donations, grants, partnerships, or volunteer support. No payment processing is active on this website."
         primaryLabel="Contact EDCH"
         primaryHref="/contact"
       />
     </main>
   );
+}
+
+function getSupportIcon(title: string) {
+  const lowerTitle = title.toLowerCase();
+
+  if (lowerTitle.includes("donation")) return "DN";
+  if (lowerTitle.includes("grant")) return "GF";
+  if (lowerTitle.includes("partner")) return "LP";
+  if (lowerTitle.includes("volunteer")) return "VS";
+
+  return "SP";
 }

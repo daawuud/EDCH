@@ -5,9 +5,9 @@ export const siteContent = {
   mission:
     "EDCH is a community-led disability support hub being developed in Edmonton to help people connect, understand services, reduce isolation, and build community leadership.",
   hero: {
-    headline: "Building a Stronger Disability Community in Edmonton",
+    headline: "Building a welcoming disability community in Edmonton",
     description:
-      "EDCH connects people with disabilities, families, caregivers, newcomers, and community partners through support, information, advocacy, training, and inclusive community programs.",
+      "EDCH brings people with disabilities, families, caregivers, newcomers, volunteers, and community partners together through support, information, advocacy, training, and inclusive local programs.",
     stats: [
       { value: "6", label: "Core service areas" },
       { value: "100%", label: "Community focused" },
@@ -33,7 +33,7 @@ export const siteContent = {
   ],
   about: {
     intro:
-      "EDCH is a community-led disability support hub being developed in Edmonton to help people connect, understand services, reduce isolation, and build community leadership.",
+      "EDCH is a community-led disability support hub being developed in Edmonton to help people connect, understand services, reduce isolation, and build community leadership together.",
     mission:
       "To connect people with disabilities, families, caregivers, newcomers, volunteers, and partners with practical support, information, advocacy, training, and inclusive community programs.",
     vision:

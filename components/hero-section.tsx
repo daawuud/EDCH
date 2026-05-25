@@ -12,7 +12,7 @@ export function HeroSection() {
           <p className="inline-flex rounded-full bg-white px-4 py-2 text-sm font-black text-edch-blue shadow-sm ring-1 ring-blue-100 dark:bg-white/10 dark:text-white dark:ring-white/10">
             {siteContent.location}
           </p>
-          <h1 className="mt-7 max-w-4xl text-4xl font-black leading-tight text-edch-ink sm:text-5xl lg:text-6xl dark:text-white">
+          <h1 className="mt-7 max-w-4xl text-4xl font-black leading-tight text-edch-ink sm:text-5xl dark:text-white">
             {siteContent.hero.headline}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl dark:text-slate-200">
@@ -43,7 +43,7 @@ export function HeroSection() {
 
         <div className="relative z-10">
           <div className="rounded-[2rem] border border-white bg-white/90 p-5 shadow-soft backdrop-blur dark:border-white/10 dark:bg-white/10">
-            <div className="rounded-[1.5rem] bg-edch-ink p-6 text-white dark:bg-slate-950/60">
+            <div className="rounded-[1.5rem] bg-[#123a66] p-6 text-white dark:bg-slate-900">
               <div className="mb-5 rounded-3xl bg-white/10 p-5">
                 <p className="text-sm font-black uppercase tracking-[0.18em] text-emerald-200">
                   Edmonton Disability Community Hub

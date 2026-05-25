@@ -27,7 +27,7 @@ export default function ContactPage({
       />
       <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-900">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="rounded-[2rem] bg-edch-ink p-8 text-white shadow-soft">
+          <div className="rounded-[2rem] bg-[#123a66] p-8 text-white shadow-soft">
             <p className="text-sm font-black uppercase tracking-[0.18em] text-emerald-300">
               Reach out
             </p>

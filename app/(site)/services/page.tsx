@@ -35,7 +35,7 @@ export default async function ServicesPage() {
                 key={service.title}
                 title={service.title}
                 description={service.description}
-                icon={`${index + 1}`}
+                icon={getServiceIcon(service.title)}
                 meta="EDCH service"
                 tone={index % 2 === 0 ? "white" : "blue"}
               />
@@ -45,4 +45,17 @@ export default async function ServicesPage() {
       </section>
     </main>
   );
+}
+
+function getServiceIcon(title: string) {
+  const lowerTitle = title.toLowerCase();
+
+  if (lowerTitle.includes("community")) return "CS";
+  if (lowerTitle.includes("navigation")) return "RN";
+  if (lowerTitle.includes("advocacy") || lowerTitle.includes("rights")) return "AC";
+  if (lowerTitle.includes("family") || lowerTitle.includes("caregiver")) return "FS";
+  if (lowerTitle.includes("newcomer")) return "NC";
+  if (lowerTitle.includes("resource")) return "RS";
+
+  return "ED";
 }

@@ -16,13 +16,16 @@ export function CallToAction({
   secondaryHref?: string;
 }) {
   return (
-    <section className="bg-edch-blue px-4 py-16 text-white sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 rounded-[2rem] bg-white/10 p-8 ring-1 ring-white/15 md:flex-row md:items-center md:justify-between">
+    <section className="bg-[#123a66] px-4 py-16 text-white sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 rounded-[2rem] bg-white/10 p-6 ring-1 ring-white/15 sm:p-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-3xl font-black">{title}</h2>
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-emerald-200">
+            Connect with EDCH
+          </p>
+          <h2 className="mt-3 text-2xl font-black sm:text-3xl">{title}</h2>
           <p className="mt-3 max-w-2xl leading-7 text-blue-50">{description}</p>
         </div>
-        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
           <Link
             href={primaryHref}
             className="rounded-full bg-white px-6 py-4 text-center font-black text-edch-blue transition hover:bg-edch-sky"

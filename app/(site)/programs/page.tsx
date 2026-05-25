@@ -34,7 +34,7 @@ export default async function ProgramsPage() {
                 key={program.title}
                 title={program.title}
                 description={program.description}
-                icon={`${index + 1}`}
+                icon={getProgramIcon(program.title)}
                 meta="Program"
                 tone={index % 3 === 1 ? "green" : "white"}
               />
@@ -44,4 +44,17 @@ export default async function ProgramsPage() {
       </section>
     </main>
   );
+}
+
+function getProgramIcon(title: string) {
+  const lowerTitle = title.toLowerCase();
+
+  if (lowerTitle.includes("meeting")) return "CM";
+  if (lowerTitle.includes("digital")) return "DS";
+  if (lowerTitle.includes("english")) return "EN";
+  if (lowerTitle.includes("accessibility")) return "AC";
+  if (lowerTitle.includes("family")) return "FS";
+  if (lowerTitle.includes("volunteer")) return "VL";
+
+  return "PG";
 }

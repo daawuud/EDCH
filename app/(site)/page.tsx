@@ -94,8 +94,8 @@ export default function Home() {
         </section>
 
         <CallToAction
-          title="Ready to connect with EDCH?"
-          description="Reach out about membership, volunteering, partnership, services, or future support for community work."
+          title="Join the conversation"
+          description="Connect with EDCH about membership, volunteering, partnership, services, or future support for community work in Edmonton."
           primaryLabel="Contact Us"
           primaryHref="/contact"
           secondaryLabel="View Resources"

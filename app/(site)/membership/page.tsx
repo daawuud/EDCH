@@ -49,7 +49,7 @@ export default function MembershipPage({
                 key={type.title}
                 title={type.title}
                 description={type.description}
-                icon={`${index + 1}`}
+                icon={getMembershipIcon(type.title)}
                 meta="Membership"
                 tone={index % 2 === 0 ? "white" : "green"}
               />
@@ -174,11 +174,22 @@ export default function MembershipPage({
         </div>
       </section>
       <CallToAction
-        title="Become a member of EDCH"
-        description="Apply online so EDCH can review your interest and keep the community organized."
+        title="Become part of the support network"
+        description="Apply online so EDCH can review your interest and keep the community connected, organized, and welcoming."
         primaryLabel="Become a Member"
         primaryHref="#membership-application"
       />
     </main>
   );
+}
+
+function getMembershipIcon(title: string) {
+  const lowerTitle = title.toLowerCase();
+
+  if (lowerTitle.includes("community")) return "CM";
+  if (lowerTitle.includes("volunteer")) return "VL";
+  if (lowerTitle.includes("supporter")) return "SP";
+  if (lowerTitle.includes("board")) return "FB";
+
+  return "MB";
 }
