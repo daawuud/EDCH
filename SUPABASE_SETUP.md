@@ -39,6 +39,7 @@ This creates:
 - `events`
 - `resources`
 - `members`
+- `membership_applications`
 - `contact_messages`
 - `site_settings`
 
@@ -83,6 +84,8 @@ variables are configured:
 - Events reads from `events`.
 - Resources reads from `resources`.
 - Members reads from `members`.
+- Membership applications read from `membership_applications` and can be
+  approved into `members`.
 - Messages reads from `contact_messages`.
 - Settings reads from `site_settings`.
 - Public Services, Programs, Events, and Resources pages read active Supabase

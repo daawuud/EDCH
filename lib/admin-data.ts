@@ -65,6 +65,18 @@ export type AdminMemberRecord = {
   notes: string;
 };
 
+export type AdminMembershipApplicationRecord = {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  memberType: string;
+  interest: string;
+  message: string;
+  status: string;
+  createdAt: string;
+};
+
 export type AdminPageRecord = {
   id: string;
   slug: string;
@@ -400,6 +412,40 @@ export async function getAdminMembers(): Promise<TableRow[]> {
     }));
   } catch {
     return adminContent.members;
+  }
+}
+
+export async function getAdminMembershipApplicationRecords(): Promise<
+  AdminMembershipApplicationRecord[]
+> {
+  noStore();
+
+  if (!hasSupabaseEnv()) {
+    return [];
+  }
+
+  try {
+    const supabase = createSupabaseServerClient();
+    const { data, error } = await supabase
+      .from("membership_applications")
+      .select("id, full_name, email, phone, member_type, interest, message, status, created_at")
+      .order("created_at", { ascending: false });
+
+    if (error || !data) return [];
+
+    return data.map((application) => ({
+      id: application.id ?? "",
+      fullName: application.full_name ?? "",
+      email: application.email ?? "",
+      phone: application.phone ?? "",
+      memberType: application.member_type ?? "Community Member",
+      interest: application.interest ?? "",
+      message: application.message ?? "",
+      status: application.status ?? "pending",
+      createdAt: formatDate(application.created_at)
+    }));
+  } catch {
+    return [];
   }
 }
 
