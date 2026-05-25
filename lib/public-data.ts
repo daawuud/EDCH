@@ -109,8 +109,8 @@ export async function getPublicMembers(): Promise<PublicMember[]> {
       .eq("status", "active")
       .order("full_name");
 
-    if (error || !data || data.length === 0) {
-      return siteContent.membersFallback;
+    if (error || !data) {
+      return [];
     }
 
     return data.map((member) => ({
@@ -119,7 +119,7 @@ export async function getPublicMembers(): Promise<PublicMember[]> {
       status: member.status ?? "Active"
     }));
   } catch {
-    return siteContent.membersFallback;
+    return [];
   }
 }
 

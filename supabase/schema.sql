@@ -302,6 +302,12 @@ on public.members for all to authenticated
 using (public.is_approved_admin())
 with check (public.is_approved_admin());
 
+drop policy if exists "Active members are public" on public.members;
+create policy "Active members are public"
+on public.members for select
+to anon, authenticated
+using (status = 'active');
+
 drop policy if exists "Approved admins manage membership applications" on public.membership_applications;
 create policy "Approved admins manage membership applications"
 on public.membership_applications for all to authenticated

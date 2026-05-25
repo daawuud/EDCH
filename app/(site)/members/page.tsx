@@ -27,8 +27,9 @@ export default async function MembersPage() {
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {members.map((member) => (
+          {members.length > 0 ? (
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {members.map((member) => (
               <article
                 key={`${member.fullName}-${member.memberType}`}
                 className="rounded-3xl border border-blue-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-soft dark:border-white/10 dark:bg-white/10"
@@ -50,8 +51,13 @@ export default async function MembersPage() {
                   {member.status}
                 </span>
               </article>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <p className="rounded-3xl border border-blue-100 bg-slate-50 p-6 font-bold text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300">
+              No active public members are listed yet.
+            </p>
+          )}
         </div>
       </section>
     </main>
