@@ -1,5 +1,6 @@
 import { CallToAction } from "@/components/call-to-action";
 import { PageHero } from "@/components/page-hero";
+import { SectionHeader } from "@/components/section-header";
 import { SectionCard } from "@/components/section-card";
 import { siteContent } from "@/data/site-content";
 import { submitMembershipApplication } from "@/lib/membership-actions";
@@ -25,12 +26,35 @@ export default function MembershipPage({
         eyebrow="Membership"
         title="Join EDCH as a member, volunteer, supporter, or future leader"
         description="Membership helps EDCH stay connected to the people it serves and gives community members a clear way to participate."
+        variant="cards"
+        primary={{ href: "#membership-application", label: "Apply Now" }}
+        secondary={{ href: "/members", label: "View Members" }}
+        cards={[
+          { title: "Community voice", description: "Members help EDCH understand real needs and priorities in Edmonton." },
+          { title: "Volunteer pathway", description: "People can offer time, language support, event help, and leadership." },
+          { title: "Future governance", description: "Interested members can help shape future board and committee structures." },
+          { title: "Admin review", description: "Applications can be reviewed safely before public member listings are shown." }
+        ]}
       />
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-950">
-        <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {siteContent.membershipTypes.map((type) => (
-            <SectionCard key={type.title} title={type.title} description={type.description} />
-          ))}
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Membership types"
+            title="Choose the way you want to participate"
+            description="EDCH can welcome different levels of involvement while keeping private application details protected."
+          />
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {siteContent.membershipTypes.map((type, index) => (
+              <SectionCard
+                key={type.title}
+                title={type.title}
+                description={type.description}
+                icon={`${index + 1}`}
+                meta="Membership"
+                tone={index % 2 === 0 ? "white" : "green"}
+              />
+            ))}
+          </div>
         </div>
       </section>
       <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-900">
@@ -61,17 +85,11 @@ export default function MembershipPage({
       >
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.18em] text-edch-green">
-              Membership application
-            </p>
-            <h2 className="mt-3 text-3xl font-black text-edch-ink dark:text-white">
-              Apply to join the EDCH community
-            </h2>
-            <p className="mt-5 leading-8 text-slate-600 dark:text-slate-300">
-              Submit your interest as a community member, volunteer, supporter,
-              or future board member. EDCH can review applications and follow up
-              respectfully.
-            </p>
+            <SectionHeader
+              eyebrow="Membership application"
+              title="Apply to join the EDCH community"
+              description="Submit your interest as a community member, volunteer, supporter, or future board member. EDCH can review applications and follow up respectfully."
+            />
             {applied ? (
               <p className="mt-6 rounded-3xl bg-edch-mint p-5 font-bold text-edch-green">
                 Thank you for applying to EDCH. Your application has been

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CallToAction } from "@/components/call-to-action";
 import { HeroSection } from "@/components/hero-section";
+import { SectionHeader } from "@/components/section-header";
 import { SectionCard } from "@/components/section-card";
 import { siteContent } from "@/data/site-content";
 
@@ -10,19 +11,12 @@ export default function Home() {
         <HeroSection />
         <section className="bg-white px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-950">
           <div className="mx-auto max-w-7xl">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-black uppercase tracking-[0.18em] text-edch-green">
-                Community website
-              </p>
-              <h1 className="mt-3 text-3xl font-black text-edch-ink sm:text-4xl dark:text-white">
-                Explore EDCH programs, services, membership, and support
-              </h1>
-              <p className="mt-5 leading-8 text-slate-600 dark:text-slate-300">
-                This homepage gives a clear overview. Each area has its own full
-                page for community members, future board members, funders, and
-                partners.
-              </p>
-            </div>
+            <SectionHeader
+              eyebrow="Community pathways"
+              title="Find the right place to start"
+              description="Each area has its own full page for community members, future board members, funders, and partners."
+              align="center"
+            />
 
             <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               <SectionCard
@@ -30,36 +24,51 @@ export default function Home() {
                 description={siteContent.about.intro}
                 href="/about"
                 cta="Learn About EDCH"
+                icon="ED"
+                meta="Community story"
               />
               <SectionCard
                 title="Community Services"
                 description="Find practical disability support, navigation, advocacy awareness, caregiver help, newcomer support, and shared resources."
                 href="/services"
                 cta="View Services"
+                icon="S"
+                meta="Support"
+                tone="blue"
               />
               <SectionCard
                 title="Programs"
                 description="Explore community meetings, digital skills training, English support, accessibility awareness, family sessions, and leadership."
                 href="/programs"
                 cta="Explore Programs"
+                icon="P"
+                meta="Learning"
               />
               <SectionCard
                 title="Membership"
                 description="Join EDCH as a community member, volunteer, supporter, or future board member."
                 href="/membership"
                 cta="Become a Member"
+                icon="M"
+                meta="Belonging"
+                tone="green"
               />
               <SectionCard
                 title="Donation Support"
                 description="Learn how donations, grants, partnerships, and volunteer support can help EDCH grow responsibly."
                 href="/donate"
                 cta="Support EDCH"
+                icon="$"
+                meta="Funding"
               />
               <SectionCard
                 title="Contact EDCH"
                 description="Ask a question, offer support, connect as a partner, or express interest in membership and volunteering."
                 href="/contact"
                 cta="Contact Us"
+                icon="@"
+                meta="Connection"
+                tone="blue"
               />
             </div>
           </div>

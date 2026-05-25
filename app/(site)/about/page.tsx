@@ -1,5 +1,7 @@
 import { CallToAction } from "@/components/call-to-action";
+import { InfoPanel } from "@/components/info-panel";
 import { PageHero } from "@/components/page-hero";
+import { SectionHeader } from "@/components/section-header";
 import { SectionCard } from "@/components/section-card";
 import { siteContent } from "@/data/site-content";
 
@@ -10,15 +12,50 @@ export default function AboutPage() {
         eyebrow="About EDCH"
         title="A community-led disability support hub for Edmonton"
         description={siteContent.about.intro}
+        variant="split"
+        primary={{ href: "/membership", label: "Join the Community" }}
+        secondary={{ href: "/contact", label: "Contact EDCH" }}
+        highlights={siteContent.about.values.slice(0, 3)}
+        cards={[
+          {
+            title: "Local and community-led",
+            description: "Built around Edmonton families, caregivers, newcomers, volunteers, and partners."
+          },
+          {
+            title: "Practical and welcoming",
+            description: "Focused on clear information, connection, and respectful support."
+          }
+        ]}
       />
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-950">
-        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
-          <SectionCard title="Mission" description={siteContent.about.mission} />
-          <SectionCard title="Vision" description={siteContent.about.vision} />
-          <SectionCard
-            title="Why EDCH matters in Edmonton"
-            description={siteContent.about.whyItMatters}
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Purpose"
+            title="A trusted local space for support, learning, and leadership"
+            description="EDCH is being shaped as a practical community hub, not just an information website."
           />
+          <div className="grid gap-6 lg:grid-cols-3">
+            <InfoPanel title="Mission" tone="blue">
+              {siteContent.about.mission}
+            </InfoPanel>
+            <InfoPanel title="Vision" tone="green">
+              {siteContent.about.vision}
+            </InfoPanel>
+            <InfoPanel title="Why it matters" tone="dark">
+              {siteContent.about.whyItMatters}
+            </InfoPanel>
+          </div>
+        </div>
+      </section>
+      <section className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-900">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <SectionHeader
+              eyebrow="Values"
+              title="How EDCH wants to work with community"
+              description="These values guide conversations, programs, services, and future partnerships."
+            />
+          </div>
           <article className="rounded-3xl border border-blue-100 bg-edch-sky p-6 shadow-sm dark:border-white/10 dark:bg-white/10">
             <h2 className="text-xl font-black text-edch-ink dark:text-white">
               Community values

@@ -1,4 +1,5 @@
 import { PageHero } from "@/components/page-hero";
+import { SectionHeader } from "@/components/section-header";
 import { getPublicMembers } from "@/lib/public-data";
 
 export default async function MembersPage() {
@@ -10,22 +11,18 @@ export default async function MembersPage() {
         eyebrow="Members"
         title="EDCH community members"
         description="Meet the people who are helping EDCH grow as a welcoming disability community hub. Only safe public information is shown here."
+        variant="centered"
+        primary={{ href: "/membership", label: "Become a Member" }}
+        secondary={{ href: "/contact", label: "Contact EDCH" }}
+        highlights={["Approved active members only", "Private details protected", "Community directory"]}
       />
       <section className="bg-white px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-950">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-sm font-black uppercase tracking-[0.18em] text-edch-green">
-              Public directory
-            </p>
-            <h2 className="mt-3 text-3xl font-black text-edch-ink dark:text-white">
-              Active members
-            </h2>
-            <p className="mt-4 leading-8 text-slate-600 dark:text-slate-300">
-              This directory shows approved active members only. Private details
-              like email, phone, notes, and application messages stay protected
-              in the admin dashboard.
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="Public directory"
+            title="Active members"
+            description="This directory shows approved active members only. Private details like email, phone, notes, and application messages stay protected in the admin dashboard."
+          />
 
           {members.length > 0 ? (
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
