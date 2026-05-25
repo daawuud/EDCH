@@ -13,6 +13,12 @@ type PublicEvent = PublicCard & {
   meta: string;
 };
 
+type PublicMember = {
+  fullName: string;
+  memberType: string;
+  status: string;
+};
+
 export async function getPublicServices(): Promise<PublicCard[]> {
   return getPublicCards("services", siteContent.services);
 }
@@ -85,6 +91,35 @@ export async function getPublicEvents(): Promise<PublicEvent[]> {
       ...event,
       meta: "Sample activity"
     }));
+  }
+}
+
+export async function getPublicMembers(): Promise<PublicMember[]> {
+  noStore();
+
+  if (!hasSupabaseEnv()) {
+    return siteContent.membersFallback;
+  }
+
+  try {
+    const supabase = createSupabaseServerClient();
+    const { data, error } = await supabase
+      .from("members")
+      .select("full_name, member_type, status")
+      .eq("status", "active")
+      .order("full_name");
+
+    if (error || !data || data.length === 0) {
+      return siteContent.membersFallback;
+    }
+
+    return data.map((member) => ({
+      fullName: member.full_name ?? "Community member",
+      memberType: member.member_type ?? "Member",
+      status: member.status ?? "Active"
+    }));
+  } catch {
+    return siteContent.membersFallback;
   }
 }
 

@@ -25,6 +25,7 @@ export const siteContent = {
     { label: "Services", href: "/services" },
     { label: "Programs", href: "/programs" },
     { label: "Membership", href: "/membership" },
+    { label: "Members", href: "/members" },
     { label: "Events", href: "/events" },
     { label: "Donate", href: "/donate" },
     { label: "Resources", href: "/resources" },
@@ -139,6 +140,23 @@ export const siteContent = {
       title: "Future Board Member",
       description:
         "Express interest in helping guide EDCH as governance and leadership structures develop."
+    }
+  ],
+  membersFallback: [
+    {
+      fullName: "Community member",
+      memberType: "Community Member",
+      status: "Active"
+    },
+    {
+      fullName: "Volunteer",
+      memberType: "Volunteer",
+      status: "Active"
+    },
+    {
+      fullName: "Supporter",
+      memberType: "Supporter",
+      status: "Active"
     }
   ],
   events: [
