@@ -23,7 +23,7 @@ const stats = [
     icon: "ED",
     description:
       "Focused on local disability support, connection, and inclusion in Edmonton.",
-    href: "/about"
+    href: "/contact"
   }
 ];
 
