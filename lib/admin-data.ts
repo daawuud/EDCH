@@ -7,6 +7,7 @@ type Stat = {
   label: string;
   value: string;
   tone: string;
+  href?: string;
 };
 
 type TableRow = Record<string, string>;
@@ -105,11 +106,11 @@ export async function getAdminStats(): Promise<Stat[]> {
     ]);
 
     return [
-      { label: "Total programs", value: String(programs), tone: "blue" },
-      { label: "Upcoming events", value: String(events), tone: "green" },
-      { label: "Resources", value: String(resources), tone: "blue" },
-      { label: "Contact messages", value: String(messages), tone: "green" },
-      { label: "Members", value: String(members), tone: "blue" }
+      { label: "Programs", value: String(programs), tone: "blue", href: "/admin/programs" },
+      { label: "Events", value: String(events), tone: "green", href: "/admin/events" },
+      { label: "Resources", value: String(resources), tone: "blue", href: "/admin/resources" },
+      { label: "Messages", value: String(messages), tone: "green", href: "/admin/messages" },
+      { label: "Members", value: String(members), tone: "blue", href: "/admin/members" }
     ];
   } catch {
     return adminContent.stats;

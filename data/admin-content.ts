@@ -57,17 +57,18 @@ export const adminContent = {
     }
   ],
   stats: [
-    { label: "Total programs", value: "6", tone: "blue" },
-    { label: "Upcoming events", value: "3", tone: "green" },
-    { label: "Resources", value: "6", tone: "blue" },
-    { label: "Contact messages", value: "4", tone: "green" },
-    { label: "Members placeholder", value: "8", tone: "blue" }
+    { label: "Programs", value: "6", tone: "blue", href: "/admin/programs" },
+    { label: "Events", value: "3", tone: "green", href: "/admin/events" },
+    { label: "Resources", value: "6", tone: "blue", href: "/admin/resources" },
+    { label: "Messages", value: "4", tone: "green", href: "/admin/messages" },
+    { label: "Members", value: "8", tone: "blue", href: "/admin/members" }
   ],
   quickActions: [
     { label: "Add Service", href: "/admin/services" },
     { label: "Add Program", href: "/admin/programs" },
     { label: "Add Event", href: "/admin/events" },
-    { label: "View Messages", href: "/admin/messages" }
+    { label: "View Messages", href: "/admin/messages" },
+    { label: "Edit Settings", href: "/admin/settings" }
   ],
   pages: [
     { page: "Home", status: "Draft-ready", updated: "Demo content" },
