@@ -1,4 +1,61 @@
 export const adminContent = {
+  dashboardCards: [
+    {
+      title: "Services",
+      description:
+        "Manage EDCH service areas such as community support, disability service navigation, advocacy, family support, newcomer support, and resource sharing.",
+      href: "/admin/services",
+      accent: "blue"
+    },
+    {
+      title: "Programs",
+      description:
+        "Manage community programs, training sessions, workshops, and support activities.",
+      href: "/admin/programs",
+      accent: "green"
+    },
+    {
+      title: "Events",
+      description:
+        "Manage upcoming community events, workshops, meetings, and training days.",
+      href: "/admin/events",
+      accent: "blue"
+    },
+    {
+      title: "Resources",
+      description:
+        "Manage helpful links, guides, disability information, transportation resources, and community supports.",
+      href: "/admin/resources",
+      accent: "green"
+    },
+    {
+      title: "Members",
+      description:
+        "Manage community members, volunteers, supporters, and future board member records.",
+      href: "/admin/members",
+      accent: "blue"
+    },
+    {
+      title: "Contact Messages",
+      description: "Review contact form submissions and community inquiries.",
+      href: "/admin/messages",
+      accent: "green"
+    },
+    {
+      title: "Website Pages",
+      description:
+        "Manage editable page content such as Home, About, Donate, Contact, and other public page text.",
+      href: "/admin/pages",
+      accent: "blue"
+    },
+    {
+      title: "Site Settings",
+      description:
+        "Manage organization name, email, phone number, location, social links, and website settings.",
+      href: "/admin/settings",
+      accent: "green"
+    }
+  ],
   stats: [
     { label: "Total programs", value: "6", tone: "blue" },
     { label: "Upcoming events", value: "3", tone: "green" },
@@ -7,10 +64,10 @@ export const adminContent = {
     { label: "Members placeholder", value: "8", tone: "blue" }
   ],
   quickActions: [
-    { label: "Manage Pages", href: "/admin/pages" },
+    { label: "Add Service", href: "/admin/services" },
+    { label: "Add Program", href: "/admin/programs" },
     { label: "Add Event", href: "/admin/events" },
-    { label: "Review Messages", href: "/admin/messages" },
-    { label: "Site Settings", href: "/admin/settings" }
+    { label: "View Messages", href: "/admin/messages" }
   ],
   pages: [
     { page: "Home", status: "Draft-ready", updated: "Demo content" },

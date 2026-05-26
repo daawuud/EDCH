@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CommunityHubVisual } from "@/components/community-hub-visual";
 import { siteContent } from "@/data/site-content";
 
 export function HeroSection() {
@@ -41,53 +42,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="relative z-10">
-          <div className="rounded-[2rem] border border-white bg-white/90 p-5 shadow-soft backdrop-blur dark:border-white/10 dark:bg-white/10">
-            <div className="rounded-[1.5rem] bg-[#123a66] p-6 text-white dark:bg-slate-900">
-              <div className="mb-5 rounded-3xl bg-white/10 p-5">
-                <p className="text-sm font-black uppercase tracking-[0.18em] text-emerald-200">
-                  Edmonton Disability Community Hub
-                </p>
-                <p className="mt-3 leading-7 text-slate-200">
-                  A local place for practical support, shared learning, and
-                  community leadership.
-                </p>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-3">
-                {siteContent.hero.stats.map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-2xl bg-white p-5 text-edch-ink shadow-sm dark:bg-white/10 dark:text-white"
-                  >
-                    <p className="text-3xl font-black text-edch-green dark:text-emerald-300">
-                      {item.value}
-                    </p>
-                    <p className="mt-2 text-sm font-bold leading-5 text-slate-600 dark:text-slate-200">
-                      {item.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-5 rounded-3xl bg-white p-6 text-edch-ink dark:bg-white/10 dark:text-white">
-                <p className="text-sm font-black uppercase tracking-[0.18em] text-edch-green dark:text-emerald-300">
-                  Community hub model
-                </p>
-                <div className="mt-5 grid gap-3">
-                  {siteContent.hero.highlights.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-3 rounded-2xl bg-edch-sky p-4 text-sm font-bold text-edch-ink dark:bg-white/10 dark:text-white"
-                    >
-                      <span className="h-3 w-3 rounded-full bg-edch-green" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <CommunityHubVisual />
       </div>
     </section>
   );

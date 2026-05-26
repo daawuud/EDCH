@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AdminDashboardCard } from "@/components/admin/admin-dashboard-card";
 import { AdminLayout } from "@/components/admin/admin-layout";
 import { StatCard } from "@/components/admin/stat-card";
 import { adminContent } from "@/data/admin-content";
@@ -9,17 +10,39 @@ export default async function AdminDashboardPage() {
 
   return (
     <AdminLayout
-      title="Dashboard"
-      description="Overview of EDCH website content, programs, events, messages, and demo member records."
+      title="Admin Dashboard"
+      description="Manage EDCH website content, programs, events, resources, and community records."
     >
       <p className="mb-6 rounded-3xl bg-edch-mint p-5 font-black text-edch-green ring-1 ring-green-100">
         Supabase-ready admin UI. If Supabase is not configured, demo data is shown automatically.
       </p>
 
-      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-5" aria-label="Dashboard summary">
         {stats.map((stat) => (
           <StatCard key={stat.label} {...stat} />
         ))}
+      </section>
+
+      <section className="mt-8">
+        <div className="mb-5">
+          <h2 className="text-2xl font-black text-edch-ink dark:text-white">
+            Website management
+          </h2>
+          <p className="mt-2 max-w-3xl font-semibold leading-7 text-slate-600 dark:text-slate-300">
+            Use the cards below to manage different parts of the EDCH website.
+          </p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {adminContent.dashboardCards.map((card) => (
+            <AdminDashboardCard
+              key={card.href}
+              title={card.title}
+              description={card.description}
+              href={card.href}
+              accent={card.accent as "blue" | "green"}
+            />
+          ))}
+        </div>
       </section>
 
       <section className="mt-8 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-blue-100 dark:bg-white/10 dark:ring-white/10">
