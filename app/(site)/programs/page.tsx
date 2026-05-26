@@ -34,6 +34,8 @@ export default async function ProgramsPage() {
                 key={program.title}
                 title={program.title}
                 description={program.description}
+                href="/programs"
+                ctaLabel="View program"
                 icon={getProgramIcon(program.title)}
                 meta="Program"
                 tone={index % 3 === 1 ? "green" : "white"}

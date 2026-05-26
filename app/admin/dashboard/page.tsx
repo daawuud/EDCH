@@ -47,7 +47,7 @@ export default async function AdminDashboardPage() {
 
       <section className="mt-8 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-blue-100 dark:bg-white/10 dark:ring-white/10">
         <h2 className="text-xl font-black text-edch-ink dark:text-white">Quick actions</h2>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {adminContent.quickActions.map((action) => (
             <Link
               key={action.href}

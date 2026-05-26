@@ -58,6 +58,8 @@ export default function AboutPage() {
             <SectionCard
               title="A trusted local support network"
               description="A warm place for people to connect, ask questions, and find reliable next steps."
+              href="/about"
+              ctaLabel="Learn more"
               icon="CS"
               meta="Community support"
               tone="white"
@@ -65,6 +67,8 @@ export default function AboutPage() {
             <SectionCard
               title="Accessible community meetings"
               description="Inclusive gatherings where members can share needs, learn together, and reduce isolation."
+              href="/events"
+              ctaLabel="View events"
               icon="AC"
               meta="Accessibility"
               tone="green"
@@ -72,6 +76,8 @@ export default function AboutPage() {
             <SectionCard
               title="Training and information sessions"
               description="Plain-language sessions for digital skills, rights awareness, services, and family support."
+              href="/programs"
+              ctaLabel="Explore programs"
               icon="TR"
               meta="Training"
               tone="white"
@@ -79,6 +85,8 @@ export default function AboutPage() {
             <SectionCard
               title="Help navigating disability services"
               description="Clear guidance for understanding service pathways, referrals, forms, and support options."
+              href="/services"
+              ctaLabel="View services"
               icon="RN"
               meta="Resources"
               tone="blue"

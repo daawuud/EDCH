@@ -33,6 +33,8 @@ export default async function EventsPage() {
                 key={event.title}
                 title={event.title}
                 description={event.description}
+                href="/events"
+                ctaLabel="View event"
                 icon="EV"
                 meta={event.meta || "Editable event"}
                 tone="blue"

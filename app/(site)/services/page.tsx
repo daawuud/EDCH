@@ -35,6 +35,8 @@ export default async function ServicesPage() {
                 key={service.title}
                 title={service.title}
                 description={service.description}
+                href="/services"
+                ctaLabel="View service"
                 icon={getServiceIcon(service.title)}
                 meta="EDCH service"
                 tone={index % 2 === 0 ? "white" : "blue"}

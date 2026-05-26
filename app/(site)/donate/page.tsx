@@ -33,6 +33,8 @@ export default function DonatePage() {
                 key={item.title}
                 title={item.title}
                 description={item.description}
+                href="/donate"
+                ctaLabel="Support EDCH"
                 icon={getSupportIcon(item.title)}
                 meta="Support pathway"
                 tone={index % 2 === 0 ? "white" : "green"}

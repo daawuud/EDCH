@@ -35,8 +35,8 @@ export default async function ResourcesPage() {
                 key={resource.title}
                 title={resource.title}
                 description={resource.description}
-                href={resource.href}
-                cta={resource.href ? "Open Resource" : undefined}
+                href={resource.href ?? "/resources"}
+                ctaLabel={resource.href ? "Open Resource" : "View resource"}
                 icon={getResourceIcon(resource.title)}
                 meta="Resource"
                 tone={index % 2 === 0 ? "blue" : "white"}

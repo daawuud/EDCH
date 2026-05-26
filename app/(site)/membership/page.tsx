@@ -49,6 +49,8 @@ export default function MembershipPage({
                 key={type.title}
                 title={type.title}
                 description={type.description}
+                href="/membership"
+                ctaLabel="Join"
                 icon={getMembershipIcon(type.title)}
                 meta="Membership"
                 tone={index % 2 === 0 ? "white" : "green"}
