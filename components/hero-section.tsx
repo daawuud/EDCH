@@ -8,7 +8,7 @@ export function HeroSection() {
       id="home"
       className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,#dff0ff,transparent_36%),linear-gradient(135deg,#ffffff_0%,#f3fbf7_48%,#e9f4ff_100%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(20,111,199,0.35),transparent_34%),linear-gradient(135deg,#071525_0%,#0b233a_50%,#082417_100%)]"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-12 sm:px-6 sm:py-14 lg:grid-cols-[1.03fr_0.97fr] lg:px-8 lg:py-16">
+      <div className="mx-auto grid max-w-7xl items-start gap-8 px-4 pb-10 pt-6 sm:px-6 sm:pb-12 sm:pt-8 lg:grid-cols-[1.03fr_0.97fr] lg:px-8 lg:pb-14 lg:pt-10">
         <div className="relative z-10">
           <p className="inline-flex rounded-full bg-white px-4 py-2 text-sm font-black text-edch-blue shadow-sm ring-1 ring-blue-100 dark:bg-white/10 dark:text-white dark:ring-white/10">
             {siteContent.location}
