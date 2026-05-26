@@ -2,8 +2,6 @@ import Link from "next/link";
 import { siteContent } from "@/data/site-content";
 
 export function SiteFooter() {
-  const year = new Date().getFullYear();
-
   return (
     <footer className="bg-slate-950 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.3fr_1fr_1fr] lg:px-8">
@@ -65,7 +63,8 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10 px-4 py-6 text-center text-sm text-slate-400">
-        Copyright © {year} {siteContent.shortName}. All rights reserved.
+        Copyright © {siteContent.footer.copyrightYear} {siteContent.shortName}.
+        All rights reserved.
       </div>
     </footer>
   );

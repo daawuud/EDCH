@@ -273,6 +273,7 @@ export const siteContent = {
   footer: {
     mission:
       "Connecting Edmonton's disability community with support, information, advocacy, training, and inclusive programs.",
-    legalLinks: ["Privacy", "Terms"]
+    legalLinks: ["Privacy", "Terms"],
+    copyrightYear: "2026"
   }
 };

@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -16,6 +17,7 @@ export function SiteHeader() {
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const nextTheme = storedTheme === "dark" || (!storedTheme && prefersDark);
 
+    setMounted(true);
     setIsDark(nextTheme);
     document.documentElement.classList.toggle("dark", nextTheme);
   }, []);
@@ -70,9 +72,12 @@ export function SiteHeader() {
             type="button"
             onClick={toggleTheme}
             className="rounded-full border border-blue-100 bg-white px-3 py-2 text-sm font-bold text-edch-ink shadow-sm transition hover:border-edch-blue dark:border-white/10 dark:bg-white/10 dark:text-white"
-            aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+            aria-label={
+              mounted && isDark ? "Switch to light theme" : "Switch to dark theme"
+            }
+            suppressHydrationWarning
           >
-            {isDark ? "Light" : "Dark"}
+            {mounted && isDark ? "Light" : "Dark"}
           </button>
           <Link
             href="/membership"
