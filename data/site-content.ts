@@ -29,6 +29,7 @@ export const siteContent = {
     { label: "Events", href: "/events" },
     { label: "Donate", href: "/donate" },
     { label: "Resources", href: "/resources" },
+    { label: "Benefits & Supports", href: "/benefits" },
     { label: "Contact", href: "/contact" }
   ],
   about: {

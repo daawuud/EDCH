@@ -4,12 +4,36 @@ import { HeroSection } from "@/components/hero-section";
 import { SectionHeader } from "@/components/section-header";
 import { SectionCard } from "@/components/section-card";
 import { siteContent } from "@/data/site-content";
+import { getPublicAdapContent } from "@/lib/adap-data";
 
-export default function Home() {
+export default async function Home() {
+  const adap = await getPublicAdapContent();
+
   return (
     <main>
         <HeroSection />
-        <section className="bg-white px-4 py-20 sm:px-6 lg:px-8 dark:bg-slate-950">
+        {adap.alertEnabled ? (
+          <section className="bg-edch-blue px-4 py-4 sm:px-6 lg:px-8">
+            <div className="mx-auto flex max-w-7xl flex-col gap-3 text-white md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-100">
+                  ADAP update
+                </p>
+                <h2 className="mt-1 text-xl font-black">{adap.alertTitle}</h2>
+                <p className="mt-1 max-w-4xl text-sm leading-6 text-blue-50 sm:text-base">
+                  {adap.alertMessage}
+                </p>
+              </div>
+              <Link
+                href="/benefits/adap-transition"
+                className="inline-flex shrink-0 justify-center rounded-full bg-white px-6 py-3 text-sm font-black text-edch-blue transition hover:bg-edch-mint"
+              >
+                View Benefits & Supports
+              </Link>
+            </div>
+          </section>
+        ) : null}
+        <section className="bg-white px-4 py-10 sm:px-6 sm:py-12 lg:px-8 dark:bg-slate-950">
           <div className="mx-auto max-w-7xl">
             <SectionHeader
               eyebrow="Community pathways"
@@ -18,7 +42,16 @@ export default function Home() {
               align="center"
             />
 
-            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              <SectionCard
+                title="Benefits & Supports"
+                description="Find Alberta and federal disability programs, ADAP transition details, forms, letters, and translated documents."
+                href="/benefits"
+                cta="View Benefits"
+                icon="BS"
+                meta="Benefits"
+                tone="green"
+              />
               <SectionCard
                 title="About EDCH"
                 description={siteContent.about.intro}

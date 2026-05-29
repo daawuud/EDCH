@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { benefitMenuItems } from "@/data/benefits-content";
 import { siteContent } from "@/data/site-content";
 import { cn } from "@/lib/utils";
 
@@ -11,6 +12,7 @@ export function SiteHeader() {
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const benefitsActive = pathname === "/benefits" || pathname.startsWith("/benefits/");
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem("edch-theme");
@@ -52,18 +54,48 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-5 xl:flex">
           {siteContent.navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "text-sm font-bold transition hover:text-edch-blue dark:hover:text-white",
-                pathname === item.href
-                  ? "text-edch-blue dark:text-white"
-                  : "text-slate-600 dark:text-slate-300"
-              )}
-            >
-              {item.label}
-            </Link>
+            item.href === "/benefits" ? (
+              <div key={item.href} className="group relative">
+                <Link
+                  href={item.href}
+                  className={cn(
+                    "inline-flex items-center gap-2 text-sm font-bold transition hover:text-edch-blue dark:hover:text-white",
+                    benefitsActive
+                      ? "text-edch-blue dark:text-white"
+                      : "text-slate-600 dark:text-slate-300"
+                  )}
+                >
+                  {item.label}
+                  <span aria-hidden="true" className="text-xs">v</span>
+                </Link>
+                <div className="invisible absolute left-1/2 top-full w-[680px] -translate-x-1/2 pt-5 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="grid gap-2 rounded-3xl bg-white p-5 text-left shadow-soft ring-1 ring-blue-100 dark:bg-slate-950 dark:ring-white/10 lg:grid-cols-2">
+                    {benefitMenuItems.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 transition hover:bg-edch-sky hover:text-edch-blue dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+                      >
+                        {child.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "text-sm font-bold transition hover:text-edch-blue dark:hover:text-white",
+                  pathname === item.href
+                    ? "text-edch-blue dark:text-white"
+                    : "text-slate-600 dark:text-slate-300"
+                )}
+              >
+                {item.label}
+              </Link>
+            )
           ))}
         </div>
 
@@ -106,19 +138,48 @@ export function SiteHeader() {
       >
         <div className="mx-auto grid max-w-7xl gap-2">
           {siteContent.navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setMenuOpen(false)}
-              className={cn(
-                "rounded-2xl px-4 py-3 text-sm font-bold transition hover:bg-edch-sky hover:text-edch-blue dark:hover:bg-white/10 dark:hover:text-white",
-                pathname === item.href
-                  ? "bg-edch-sky text-edch-blue dark:bg-white/10 dark:text-white"
-                  : "text-slate-700 dark:text-slate-200"
-              )}
-            >
-              {item.label}
-            </Link>
+            item.href === "/benefits" ? (
+              <div key={item.href} className="grid gap-2">
+                <Link
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={cn(
+                    "rounded-2xl px-4 py-3 text-sm font-black transition hover:bg-edch-sky hover:text-edch-blue dark:hover:bg-white/10 dark:hover:text-white",
+                    benefitsActive
+                      ? "bg-edch-sky text-edch-blue dark:bg-white/10 dark:text-white"
+                      : "text-slate-700 dark:text-slate-200"
+                  )}
+                >
+                  {item.label}
+                </Link>
+                <div className="grid gap-1 rounded-3xl bg-slate-50 p-3 ring-1 ring-blue-100 dark:bg-white/5 dark:ring-white/10">
+                  {benefitMenuItems.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="rounded-2xl px-4 py-2.5 text-sm font-bold text-slate-600 transition hover:bg-edch-sky hover:text-edch-blue dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+                    >
+                      {child.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className={cn(
+                  "rounded-2xl px-4 py-3 text-sm font-bold transition hover:bg-edch-sky hover:text-edch-blue dark:hover:bg-white/10 dark:hover:text-white",
+                  pathname === item.href
+                    ? "bg-edch-sky text-edch-blue dark:bg-white/10 dark:text-white"
+                    : "text-slate-700 dark:text-slate-200"
+                )}
+              >
+                {item.label}
+              </Link>
+            )
           ))}
           <Link
             href="/membership"

@@ -11,6 +11,7 @@ const adminLinks = [
   { label: "Programs", href: "/admin/programs" },
   { label: "Events", href: "/admin/events" },
   { label: "Resources", href: "/admin/resources" },
+  { label: "ADAP", href: "/admin/adap" },
   { label: "Members", href: "/admin/members" },
   { label: "Messages", href: "/admin/messages" },
   { label: "Settings", href: "/admin/settings" }

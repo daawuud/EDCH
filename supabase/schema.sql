@@ -71,6 +71,54 @@ create table if not exists public.resources (
   updated_at timestamptz not null default now()
 );
 
+create table if not exists public.adap_content (
+  id uuid primary key default gen_random_uuid(),
+  alert_enabled boolean not null default true,
+  alert_title text not null default 'ADAP support is available through EDCH',
+  alert_message text,
+  page_title text not null default 'ADAP information and document support',
+  page_summary text,
+  eligibility text,
+  application_steps text,
+  document_checklist text,
+  main_pdf_url text,
+  english_letter_url text,
+  somali_letter_url text,
+  arabic_letter_url text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+insert into public.adap_content (
+  alert_enabled,
+  alert_title,
+  alert_message,
+  page_title,
+  page_summary,
+  eligibility,
+  application_steps,
+  document_checklist
+)
+select
+  true,
+  'ADAP support is available through EDCH',
+  'Find plain-language ADAP information, document checklists, and translated support letters in English, Somali, and Arabic.',
+  'ADAP information and document support',
+  'EDCH helps community members understand ADAP and disability support pathways, prepare documents, and access translated letters for family or service conversations.',
+  'ADAP and related disability supports may depend on disability needs, residency, income, equipment requirements, health documentation, and program-specific rules.',
+  'Review the program information.
+Gather identification and health documents.
+Ask a doctor, therapist, or service provider what documentation is needed.
+Use the translated support letters when language access is helpful.
+Contact EDCH if you need help understanding next steps.',
+  'Government ID or immigration documents
+Alberta Health Care card
+Medical or therapy notes when available
+Proof of address
+Income or benefit information if requested
+Existing equipment, prescription, or assessment details'
+where not exists (select 1 from public.adap_content);
+
 create table if not exists public.members (
   id uuid primary key default gen_random_uuid(),
   full_name text not null,
@@ -180,6 +228,11 @@ create trigger set_resources_updated_at
 before update on public.resources
 for each row execute function public.set_updated_at();
 
+drop trigger if exists set_adap_content_updated_at on public.adap_content;
+create trigger set_adap_content_updated_at
+before update on public.adap_content
+for each row execute function public.set_updated_at();
+
 drop trigger if exists set_members_updated_at on public.members;
 create trigger set_members_updated_at
 before update on public.members
@@ -206,6 +259,7 @@ alter table public.services enable row level security;
 alter table public.programs enable row level security;
 alter table public.events enable row level security;
 alter table public.resources enable row level security;
+alter table public.adap_content enable row level security;
 alter table public.members enable row level security;
 alter table public.membership_applications enable row level security;
 alter table public.contact_messages enable row level security;
@@ -254,6 +308,12 @@ on public.resources for select
 to anon, authenticated
 using (is_active = true);
 
+drop policy if exists "ADAP content is public" on public.adap_content;
+create policy "ADAP content is public"
+on public.adap_content for select
+to anon, authenticated
+using (true);
+
 drop policy if exists "Public can submit contact messages" on public.contact_messages;
 create policy "Public can submit contact messages"
 on public.contact_messages for insert
@@ -293,6 +353,12 @@ with check (public.is_approved_admin());
 drop policy if exists "Approved admins manage resources" on public.resources;
 create policy "Approved admins manage resources"
 on public.resources for all to authenticated
+using (public.is_approved_admin())
+with check (public.is_approved_admin());
+
+drop policy if exists "Approved admins manage ADAP content" on public.adap_content;
+create policy "Approved admins manage ADAP content"
+on public.adap_content for all to authenticated
 using (public.is_approved_admin())
 with check (public.is_approved_admin());
 

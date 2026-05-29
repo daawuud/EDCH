@@ -29,6 +29,13 @@ export const adminContent = {
       accent: "green"
     },
     {
+      title: "ADAP",
+      description:
+        "Manage the ADAP homepage alert, public ADAP information, document checklist, and translated letter PDFs.",
+      href: "/admin/adap",
+      accent: "blue"
+    },
+    {
       title: "Members",
       description:
         "Manage community members, volunteers, supporters, and future board member records.",
@@ -67,6 +74,7 @@ export const adminContent = {
     { label: "Add Service", href: "/admin/services" },
     { label: "Add Program", href: "/admin/programs" },
     { label: "Add Event", href: "/admin/events" },
+    { label: "Update ADAP", href: "/admin/adap" },
     { label: "View Messages", href: "/admin/messages" },
     { label: "Edit Settings", href: "/admin/settings" }
   ],

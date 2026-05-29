@@ -6,6 +6,14 @@ const RESOURCE_BUCKET = "edch-files";
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
 export async function uploadResourceFile(file: File) {
+  return uploadFile(file, "resources");
+}
+
+export async function uploadAdapFile(file: File) {
+  return uploadFile(file, "adap");
+}
+
+async function uploadFile(file: File, folder: "resources" | "adap") {
   if (!file || file.size === 0) {
     return "";
   }
@@ -17,7 +25,7 @@ export async function uploadResourceFile(file: File) {
   const supabase = await getVerifiedAdminClient();
   const extension = getExtension(file.name);
   const filename = `${Date.now()}-${crypto.randomUUID()}${extension}`;
-  const path = `resources/${filename}`;
+  const path = `${folder}/${filename}`;
   const bytes = Buffer.from(await file.arrayBuffer());
 
   const { error } = await supabase.storage
