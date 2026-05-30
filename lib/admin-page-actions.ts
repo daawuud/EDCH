@@ -50,6 +50,36 @@ export async function updatePageContent(formData: FormData) {
   revalidatePath("/admin/pages");
 }
 
+export async function updateBenefitGuideContent(formData: FormData) {
+  const slug = getText(formData, "slug");
+
+  if (!hasSupabaseEnv()) {
+    revalidatePath("/admin/benefits");
+    revalidatePath(`/benefits/${slug.replace("benefits/", "")}`);
+    return;
+  }
+
+  const supabase = await getVerifiedAdminClient();
+
+  const { error } = await supabase.from("pages").upsert(
+    {
+      slug,
+      title: getText(formData, "title"),
+      summary: getText(formData, "summary"),
+      content: getText(formData, "content"),
+      is_published: formData.get("isPublished") === "on"
+    },
+    { onConflict: "slug" }
+  );
+
+  if (error) throw new Error(`Error updating benefit guide: ${error.message}`);
+
+  revalidatePath("/admin/benefits");
+  revalidatePath("/admin/pages");
+  revalidatePath("/benefits");
+  revalidatePath(`/benefits/${slug.replace("benefits/", "")}`);
+}
+
 export async function deletePageContent(formData: FormData) {
   if (!hasSupabaseEnv()) {
     revalidatePath("/admin/pages");

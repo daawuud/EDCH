@@ -59,7 +59,8 @@ export function SiteHeader() {
   const [moreOpen, setMoreOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const moreRef = useRef<HTMLDivElement>(null);
+  const desktopMoreRef = useRef<HTMLDivElement>(null);
+  const tabletMoreRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -84,7 +85,12 @@ export function SiteHeader() {
     }
 
     function handlePointerDown(event: PointerEvent) {
-      if (moreRef.current && !moreRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      const insideDesktopMore =
+        desktopMoreRef.current?.contains(target) ?? false;
+      const insideTabletMore = tabletMoreRef.current?.contains(target) ?? false;
+
+      if (!insideDesktopMore && !insideTabletMore) {
         setMoreOpen(false);
       }
     }
@@ -131,7 +137,7 @@ export function SiteHeader() {
         isDark={isDark}
         mounted={mounted}
         moreOpen={moreOpen}
-        moreRef={moreRef}
+        moreRef={desktopMoreRef}
         onMoreOpenChange={setMoreOpen}
         onToggleTheme={toggleTheme}
       />
@@ -141,7 +147,7 @@ export function SiteHeader() {
         isDark={isDark}
         mounted={mounted}
         moreOpen={moreOpen}
-        moreRef={moreRef}
+        moreRef={tabletMoreRef}
         onMoreOpenChange={setMoreOpen}
         onToggleTheme={toggleTheme}
       />
@@ -431,8 +437,15 @@ function MoreDropdown({
           onOpenChange(true);
         }
       }}
-      onMouseLeave={() => {
+      onFocus={() => {
         if (variant === "desktop") {
+          onOpenChange(true);
+        }
+      }}
+      onBlur={(event) => {
+        const nextTarget = event.relatedTarget as Node | null;
+
+        if (!nextTarget || !event.currentTarget.contains(nextTarget)) {
           onOpenChange(false);
         }
       }}
@@ -448,14 +461,25 @@ function MoreDropdown({
         aria-haspopup="true"
         aria-expanded={open}
         aria-controls={id}
-        onClick={() => onOpenChange(!open)}
+        onClick={() => {
+          if (variant === "desktop") {
+            onOpenChange(true);
+            return;
+          }
+
+          onOpenChange(!open);
+        }}
       >
         {buttonLabel}
         <ChevronDown className={cn("h-4 w-4 shrink-0 transition", open && "rotate-180")} />
       </button>
 
       {open ? (
-        <div id={id} className={cn("absolute top-full z-50 pt-3", panelClassName)}>
+        <div
+          id={id}
+          className={cn("absolute top-full z-[60] pt-3", panelClassName)}
+          onPointerDown={(event) => event.stopPropagation()}
+        >
           <div className="rounded-2xl bg-white p-4 text-left shadow-soft ring-1 ring-blue-100 dark:bg-slate-950 dark:ring-white/10">
             {variant === "desktop" ? (
               <DesktopMorePanel
@@ -629,6 +653,13 @@ function MobileMenu({
             id="mobile-benefits-menu"
             className="grid gap-1 rounded-2xl bg-slate-50 p-2 ring-1 ring-blue-100 dark:bg-white/5 dark:ring-white/10"
           >
+            <Link
+              href="/benefits"
+              onClick={onNavigate}
+              className="rounded-xl px-3 py-1.5 text-sm font-black leading-snug text-edch-ink transition hover:bg-edch-sky hover:text-edch-blue focus:outline-none focus-visible:ring-2 focus-visible:ring-edch-blue dark:text-white dark:hover:bg-white/10"
+            >
+              Benefits overview
+            </Link>
             {benefitMenuItems.map((item) => (
               <Link
                 key={item.href}

@@ -11,6 +11,7 @@ const adminLinks = [
   { label: "Programs", href: "/admin/programs" },
   { label: "Events", href: "/admin/events" },
   { label: "Resources", href: "/admin/resources" },
+  { label: "Benefits", href: "/admin/benefits" },
   { label: "ADAP", href: "/admin/adap" },
   { label: "Members", href: "/admin/members" },
   { label: "Messages", href: "/admin/messages" },
@@ -43,7 +44,7 @@ export function AdminSidebar() {
             href={item.href}
             className={cn(
               "rounded-2xl px-4 py-3 text-sm font-black transition",
-              pathname === item.href
+              pathname === item.href || pathname.startsWith(`${item.href}/`)
                 ? "bg-edch-blue text-white"
                 : "text-slate-600 hover:bg-edch-sky hover:text-edch-blue dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
             )}

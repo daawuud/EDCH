@@ -29,6 +29,13 @@ export const adminContent = {
       accent: "green"
     },
     {
+      title: "Benefits & Supports",
+      description:
+        "Review the Benefits & Supports navigation structure, submenu items, public guide links, and ADAP management path.",
+      href: "/admin/benefits",
+      accent: "blue"
+    },
+    {
       title: "ADAP",
       description:
         "Manage the ADAP homepage alert, public ADAP information, document checklist, and translated letter PDFs.",
@@ -74,6 +81,7 @@ export const adminContent = {
     { label: "Add Service", href: "/admin/services" },
     { label: "Add Program", href: "/admin/programs" },
     { label: "Add Event", href: "/admin/events" },
+    { label: "Review Benefits", href: "/admin/benefits" },
     { label: "Update ADAP", href: "/admin/adap" },
     { label: "View Messages", href: "/admin/messages" },
     { label: "Edit Settings", href: "/admin/settings" }

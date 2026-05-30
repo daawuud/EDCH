@@ -1,5 +1,6 @@
 import { unstable_noStore as noStore } from "next/cache";
 import { adminContent } from "@/data/admin-content";
+import { benefitMenuItems } from "@/data/benefits-content";
 import { hasSupabaseEnv } from "@/lib/supabase/config";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -86,6 +87,12 @@ export type AdminPageRecord = {
   content: string;
   isPublished: boolean;
   updatedAt: string;
+};
+
+export type AdminBenefitGuideRecord = AdminPageRecord & {
+  href: string;
+  defaultDescription: string;
+  hasSavedContent: boolean;
 };
 
 export async function getAdminStats(): Promise<Stat[]> {
@@ -178,6 +185,65 @@ export async function getAdminPageRecords(): Promise<AdminPageRecord[]> {
     }));
   } catch {
     return [];
+  }
+}
+
+export async function getAdminBenefitGuideRecords(): Promise<
+  AdminBenefitGuideRecord[]
+> {
+  noStore();
+
+  const defaults = benefitMenuItems.map((item) => ({
+    id: "",
+    slug: item.href.replace(/^\//, ""),
+    title: item.title,
+    summary: item.description,
+    content:
+      "Add plain-language details, eligibility notes, application steps, useful links, forms, letters, and translated support information for this guide.",
+    isPublished: false,
+    updatedAt: "Not saved yet",
+    href: item.href,
+    defaultDescription: item.description,
+    hasSavedContent: false
+  }));
+
+  if (!hasSupabaseEnv()) {
+    return defaults.map((guide, index) => ({
+      ...guide,
+      id: `demo-benefit-${index + 1}`
+    }));
+  }
+
+  try {
+    const supabase = createSupabaseServerClient();
+    const slugs = defaults.map((guide) => guide.slug);
+    const { data, error } = await supabase
+      .from("pages")
+      .select("id, slug, title, summary, content, is_published, updated_at")
+      .in("slug", slugs);
+
+    if (error || !data) return defaults;
+
+    return defaults.map((guide) => {
+      const saved = data.find((page) => page.slug === guide.slug);
+
+      if (!saved) {
+        return guide;
+      }
+
+      return {
+        ...guide,
+        id: saved.id ?? "",
+        title: saved.title ?? guide.title,
+        summary: saved.summary ?? guide.summary,
+        content: saved.content ?? guide.content,
+        isPublished: Boolean(saved.is_published),
+        updatedAt: formatDate(saved.updated_at),
+        hasSavedContent: true
+      };
+    });
+  } catch {
+    return defaults;
   }
 }
 
