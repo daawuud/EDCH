@@ -11,13 +11,13 @@ export default async function AdminDashboardPage() {
   return (
     <AdminLayout
       title="Admin Dashboard"
-      description="Manage EDCH website content, programs, events, resources, and community records."
+      description="Manage the EDCH website structure, Benefits & Supports dropdown, multilingual content, and community records."
     >
       <p className="mb-6 rounded-3xl bg-edch-mint p-5 font-black text-edch-green ring-1 ring-green-100">
         Supabase-ready admin UI. If Supabase is not configured, demo data is shown automatically.
       </p>
 
-      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-5" aria-label="Dashboard summary">
+      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-6" aria-label="Dashboard summary">
         {stats.map((stat) => (
           <StatCard key={stat.label} {...stat} />
         ))}
@@ -29,7 +29,7 @@ export default async function AdminDashboardPage() {
             Website management
           </h2>
           <p className="mt-2 max-w-3xl font-semibold leading-7 text-slate-600 dark:text-slate-300">
-            Use the cards below to manage different parts of the EDCH website.
+            Use the cards below to manage the public navigation areas, language sections, and grouped community links.
           </p>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">

@@ -46,29 +46,29 @@ export default async function AdminBenefitsPage() {
 
       <section className="mt-8 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-blue-100 dark:bg-white/10 dark:ring-white/10">
         <p className="text-xs font-black uppercase tracking-[0.16em] text-edch-green">
-          AISH letters
+          AISH letters and language routing
         </p>
         <h2 className="mt-2 text-xl font-black text-edch-ink dark:text-white">
-          Upload letters for people remaining on AISH
+          Keep benefit guides English-first, with translated materials under Other Languages
         </h2>
         <div className="mt-3 grid gap-4 leading-7 text-slate-600 md:grid-cols-[1.2fr_0.8fr] dark:text-slate-300">
           <div>
             <p>
-              Use Resources for English and Somali AISH letter files. After
-              uploading each file, copy the saved file URL into the AISH guide
-              content below so community members can find both letters from the
-              Benefits & Supports menu.
+              Use Resources for English AISH files and use Other Languages for
+              Somali-specific guidance. The Benefits & Supports dropdown should
+              keep the English benefit guides clear, while translated resources
+              stay grouped inside the multilingual section.
             </p>
             <ol className="mt-4 list-decimal space-y-2 pl-5 font-semibold">
               <li>Open Manage resource links.</li>
-              <li>Create one resource named AISH remaining support letter - English.</li>
-              <li>Create one resource named AISH remaining support letter - Somali.</li>
-              <li>Use category AISH Letters and upload each PDF or document.</li>
-              <li>Paste both uploaded URLs into the AISH guide content.</li>
+              <li>Create English benefit resources for the AISH guide when needed.</li>
+              <li>Use Manage Other Languages to review Somali AISH content.</li>
+              <li>Keep translated guidance out of the Benefits & Supports submenu.</li>
             </ol>
           </div>
           <div className="grid content-start gap-3">
             <AdminLink href="/admin/resources">Upload AISH letters</AdminLink>
+            <AdminLink href="/admin/languages">Review Somali resources</AdminLink>
             <AdminLink href="#guide-benefits-aish">Edit AISH guide</AdminLink>
           </div>
         </div>

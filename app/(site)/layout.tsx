@@ -1,3 +1,4 @@
+import { AccessibilityAssistant } from "@/components/accessibility-assistant";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -11,6 +12,7 @@ export default function SiteLayout({
       <SiteHeader />
       {children}
       <SiteFooter />
+      <AccessibilityAssistant />
     </>
   );
 }

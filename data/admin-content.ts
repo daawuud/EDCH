@@ -17,7 +17,7 @@ export const adminContent = {
     {
       title: "Events",
       description:
-        "Manage upcoming community events, workshops, meetings, and training days.",
+        "Manage upcoming community events, workshops, meetings, and training days. Public navigation groups this under More.",
       href: "/admin/events",
       accent: "blue"
     },
@@ -31,21 +31,28 @@ export const adminContent = {
     {
       title: "Benefits & Supports",
       description:
-        "Review the Benefits & Supports navigation structure, submenu items, public guide links, and ADAP management path.",
+        "Review the Benefits & Supports dropdown, submenu guide pages, public guide links, and ADAP management path.",
       href: "/admin/benefits",
       accent: "blue"
     },
     {
+      title: "Other Languages",
+      description:
+        "Review the multilingual navigation structure, Somali resource hub, and coming-soon language sections.",
+      href: "/admin/languages",
+      accent: "green"
+    },
+    {
       title: "ADAP",
       description:
-        "Manage the ADAP homepage alert, public ADAP information, document checklist, and translated letter PDFs.",
+        "Manage the ADAP homepage alert, public ADAP information, document checklist, and related letter PDFs.",
       href: "/admin/adap",
       accent: "blue"
     },
     {
-      title: "Members",
+      title: "Membership & Members",
       description:
-        "Manage community members, volunteers, supporters, and future board member records.",
+        "Manage membership applications, community members, volunteers, supporters, and future board member records. Public navigation groups this under More.",
       href: "/admin/members",
       accent: "blue"
     },
@@ -58,7 +65,7 @@ export const adminContent = {
     {
       title: "Website Pages",
       description:
-        "Manage editable page content such as Home, About, Donate, Contact, and other public page text.",
+        "Manage editable page content such as Home, About, Contact, Donate, and other public page text.",
       href: "/admin/pages",
       accent: "blue"
     },
@@ -74,6 +81,7 @@ export const adminContent = {
     { label: "Programs", value: "6", tone: "blue", href: "/admin/programs" },
     { label: "Events", value: "3", tone: "green", href: "/admin/events" },
     { label: "Resources", value: "6", tone: "blue", href: "/admin/resources" },
+    { label: "Languages", value: "1", tone: "green", href: "/admin/languages" },
     { label: "Messages", value: "4", tone: "green", href: "/admin/messages" },
     { label: "Members", value: "8", tone: "blue", href: "/admin/members" }
   ],
@@ -82,6 +90,7 @@ export const adminContent = {
     { label: "Add Program", href: "/admin/programs" },
     { label: "Add Event", href: "/admin/events" },
     { label: "Review Benefits", href: "/admin/benefits" },
+    { label: "Review Languages", href: "/admin/languages" },
     { label: "Update ADAP", href: "/admin/adap" },
     { label: "View Messages", href: "/admin/messages" },
     { label: "Edit Settings", href: "/admin/settings" }

@@ -95,7 +95,7 @@ export const benefitSections: BenefitSection[] = [
     title: "Resources & Guides",
     href: "/benefits/resources-guides",
     description:
-      "Forms, letters, translated documents, and plain-language frequently asked questions.",
+      "Forms, letters, and plain-language frequently asked questions.",
     items: [
       {
         title: "Forms",
@@ -108,12 +108,6 @@ export const benefitSections: BenefitSection[] = [
         href: "/benefits/government-letters",
         description:
           "Placeholder library for government letter templates and examples."
-      },
-      {
-        title: "Translated Documents",
-        href: "/benefits/translated-documents",
-        description:
-          "Placeholder library for translated support documents and language access."
       },
       {
         title: "FAQs",

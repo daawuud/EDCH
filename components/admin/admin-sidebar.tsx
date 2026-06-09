@@ -4,18 +4,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const adminLinks = [
-  { label: "Dashboard", href: "/admin/dashboard" },
-  { label: "Pages", href: "/admin/pages" },
-  { label: "Services", href: "/admin/services" },
-  { label: "Programs", href: "/admin/programs" },
-  { label: "Events", href: "/admin/events" },
-  { label: "Resources", href: "/admin/resources" },
-  { label: "Benefits", href: "/admin/benefits" },
-  { label: "ADAP", href: "/admin/adap" },
-  { label: "Members", href: "/admin/members" },
-  { label: "Messages", href: "/admin/messages" },
-  { label: "Settings", href: "/admin/settings" }
+const adminSections = [
+  {
+    title: "Main navigation",
+    links: [
+      { label: "Dashboard", href: "/admin/dashboard" },
+      { label: "Pages", href: "/admin/pages" },
+      { label: "Services", href: "/admin/services" },
+      { label: "Programs", href: "/admin/programs" },
+      { label: "Resources", href: "/admin/resources" },
+      { label: "Benefits & Supports", href: "/admin/benefits" },
+      { label: "Other Languages", href: "/admin/languages" },
+      { label: "Messages", href: "/admin/messages" },
+      { label: "Settings", href: "/admin/settings" }
+    ]
+  },
+  {
+    title: "More",
+    links: [
+      { label: "Membership & Members", href: "/admin/members" },
+      { label: "Events", href: "/admin/events" },
+      { label: "ADAP", href: "/admin/adap" }
+    ]
+  }
 ];
 
 export function AdminSidebar() {
@@ -37,20 +48,27 @@ export function AdminSidebar() {
         </span>
       </Link>
 
-      <nav aria-label="Admin navigation" className="mt-6 grid gap-2">
-        {adminLinks.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={cn(
-              "rounded-2xl px-4 py-3 text-sm font-black transition",
-              pathname === item.href || pathname.startsWith(`${item.href}/`)
-                ? "bg-edch-blue text-white"
-                : "text-slate-600 hover:bg-edch-sky hover:text-edch-blue dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
-            )}
-          >
-            {item.label}
-          </Link>
+      <nav aria-label="Admin navigation" className="mt-6 grid gap-5">
+        {adminSections.map((section) => (
+          <div key={section.title} className="grid gap-2">
+            <p className="px-4 text-xs font-black uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+              {section.title}
+            </p>
+            {section.links.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "rounded-2xl px-4 py-3 text-sm font-black transition",
+                  pathname === item.href || pathname.startsWith(`${item.href}/`)
+                    ? "bg-edch-blue text-white"
+                    : "text-slate-600 hover:bg-edch-sky hover:text-edch-blue dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
         ))}
       </nav>
 

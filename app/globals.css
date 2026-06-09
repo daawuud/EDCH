@@ -26,6 +26,73 @@ html.dark body {
   color: #f8fbff;
 }
 
+html.a11y-large-text {
+  font-size: 112.5%;
+}
+
+html.a11y-readable-font body {
+  font-family: Arial, Verdana, sans-serif;
+  letter-spacing: 0;
+  line-height: 1.7;
+}
+
+html.a11y-high-contrast body {
+  background: #ffffff;
+  color: #000000;
+}
+
+html.dark.a11y-high-contrast body {
+  background: #000000;
+  color: #ffffff;
+}
+
+html.a11y-high-contrast main,
+html.a11y-high-contrast section,
+html.a11y-high-contrast article,
+html.a11y-high-contrast header,
+html.a11y-high-contrast footer,
+html.a11y-high-contrast nav,
+html.a11y-high-contrast aside {
+  border-color: currentColor !important;
+}
+
+html.a11y-high-contrast a {
+  color: #0047b3 !important;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+html.dark.a11y-high-contrast a {
+  color: #8fc7ff !important;
+}
+
+html.a11y-high-contrast button,
+html.a11y-high-contrast input,
+html.a11y-high-contrast select,
+html.a11y-high-contrast textarea {
+  border-color: currentColor !important;
+}
+
+html.a11y-focus-guide *:focus,
+html.a11y-focus-guide *:focus-visible {
+  outline: 4px solid #ffbf00 !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 7px rgba(0, 0, 0, 0.25) !important;
+}
+
+html.a11y-simplified-nav header nav a,
+html.a11y-simplified-nav header nav button {
+  min-height: 44px;
+}
+
+html.a11y-simplified-nav header {
+  position: sticky;
+}
+
+html.a11y-simplified-nav main {
+  scroll-margin-top: 7rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     scroll-behavior: auto;
@@ -39,4 +106,17 @@ html.dark body {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+html.a11y-reduce-motion {
+  scroll-behavior: auto;
+}
+
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0.01ms !important;
 }
