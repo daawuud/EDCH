@@ -63,8 +63,11 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10 px-4 py-6 text-center text-sm text-slate-400">
-        Copyright © {siteContent.footer.copyrightYear} {siteContent.shortName}.
-        All rights reserved.
+        <p>
+          Copyright © {siteContent.footer.copyrightYear} {siteContent.shortName}.
+          All rights reserved.
+        </p>
+        <p className="mt-2">Web developer: Daud Mohamed</p>
       </div>
     </footer>
   );
